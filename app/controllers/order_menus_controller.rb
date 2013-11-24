@@ -3,7 +3,11 @@ class OrderMenusController < ApplicationController
 
   def index
     @order_menus = OrderMenu.all
+    @time = Time.new
+    @time = @time.strftime("%A").to_s.downcase
+    @item_menus =  ItemMenu.where(@time=>true)
   end
+
 
   def show
     @order_menu = OrderMenu.find_by(id: params[:id])
