@@ -14,13 +14,15 @@
       <th>Item picture</th>
       <th>Item description</th>
       <th>Item price</th>
+      <!--
       <th>Monday</th>
       <th>Tuesday</th>
       <th>Wednesday</th>
       <th>Thursday</th>
       <th>Friday</th>
       <th>Saturday</th>
-      <th>Sunday</th>
+      <th>Sunday</th> -->
+      <th>Available on </th>
       <th></th>
       <th></th>
       <th></th>
@@ -35,6 +37,7 @@
         <td><%= image_tag item_menu.item_picture, :width => 100 %></td>
         <td><%= item_menu.item_description %></td>
         <td><%= item_menu.item_price %></td>
+      <!--  
         <td><%= item_menu.monday? %></td>
         <td><%= item_menu.tuesday? %></td>
         <td><%= item_menu.wednesday? %></td>
@@ -42,7 +45,17 @@
         <td><%= item_menu.friday? %></td>
         <td><%= item_menu.saturday? %></td>
         <td><%= item_menu.sunday? %></td>
+      -->
+      <td>
+        <% if item_menu.monday? %>Monday<%else%><%end%>
+        <% if item_menu.tuesday? %>Tuesday<%else%><%end%>
+        <% if item_menu.wednesday? %>Wednesday<%else%><%end%>
+        <% if item_menu.thursday? %>Thursday<%else%><%end%>
+        <% if item_menu.friday? %>Friday<%else%><%end%>
+        <% if item_menu.saturday? %>Saturday<%else%><%end%>
+        <% if item_menu.sunday? %>Sunday<%else%><%end%>
 
+      </td>
         <% if current_user.try(:admin?)%>
         <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, item_menu_url(item_menu), class: 'btn btn-primary' %></td>
         <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_item_menu_url(item_menu), class: 'btn btn-warning' %></td>
