@@ -1,5 +1,5 @@
 class OrderSummariesController < ApplicationController
-
+  
   def index
     @order_summaries = OrderSummary.all
   end

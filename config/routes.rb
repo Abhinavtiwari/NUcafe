@@ -1,5 +1,6 @@
 NUcafe::Application.routes.draw do
   
+  devise_for :users
   root "users#index"
 
   # Routes for the Item_menu resource:

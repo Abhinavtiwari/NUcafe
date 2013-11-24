@@ -1,5 +1,6 @@
 class OrderMenusController < ApplicationController
 
+
   def index
     @order_menus = OrderMenu.all
   end

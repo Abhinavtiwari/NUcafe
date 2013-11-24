@@ -1,5 +1,6 @@
 class ItemMenusController < ApplicationController
 
+
   def index
     @item_menus = ItemMenu.all
   end
