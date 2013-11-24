@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h1>Item menus</h1>
+</div>
+
+<p><%= link_to 'Add a New Item Menu', new_item_menu_url, class: 'btn btn-primary' %></p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Item name</th>
+      <th>Item category</th>
+      <th>Item picture</th>
+      <th>Item description</th>
+      <th>Item price</th>
+      <th>Monday</th>
+      <th>Tuesday</th>
+      <th>Wednesday</th>
+      <th>Thursday</th>
+      <th>Friday</th>
+      <th>Saturday</th>
+      <th>Sunday</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item_menus.each do |item_menu| %>
+      <tr>
+        <td><%= item_menu.item_name %></td>
+        <td><%= item_menu.item_category %></td>
+        <td><%= image_tag item_menu.item_picture, :width => 100 %></td>
+        <td><%= item_menu.item_description %></td>
+        <td><%= item_menu.item_price %></td>
+        <td><%= item_menu.monday? %></td>
+        <td><%= item_menu.tuesday? %></td>
+        <td><%= item_menu.wednesday? %></td>
+        <td><%= item_menu.thursday? %></td>
+        <td><%= item_menu.friday? %></td>
+        <td><%= item_menu.saturday? %></td>
+        <td><%= item_menu.sunday? %></td>
+        <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, item_menu_url(item_menu), class: 'btn btn-primary' %></td>
+        <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_item_menu_url(item_menu), class: 'btn btn-warning' %></td>
+        <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, item_menu_url(item_menu), method: 'delete', data: { confirm: "Do you really want to delete this item_menu?" }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

@@ -1,0 +1,95 @@
+<div class="page-header">
+  <h1>Editing Item Menu #<%= @item_menu.id %></h1>
+</div>
+
+<%= form_tag(item_menu_url(@item_menu), method: 'patch', class: 'form-horizontal') do %>
+  <div class="form-group">
+    <%= label_tag :item_name, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :item_name, @item_menu.item_name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :item_category, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :item_category, @item_menu.item_category, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :item_picture, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :item_picture, @item_menu.item_picture, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :item_description, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :item_description, @item_menu.item_description, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :item_price, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :item_price, @item_menu.item_price, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :monday, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= check_box_tag :monday, 1, @item_menu.monday? %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :tuesday, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= check_box_tag :tuesday, 1, @item_menu.tuesday? %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :wednesday, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= check_box_tag :wednesday, 1, @item_menu.wednesday? %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :thursday, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= check_box_tag :thursday, 1, @item_menu.thursday? %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :friday, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= check_box_tag :friday, 1, @item_menu.friday? %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :saturday, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= check_box_tag :saturday, 1, @item_menu.saturday? %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :sunday, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= check_box_tag :sunday, 1, @item_menu.sunday? %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-6">
+      <%= submit_tag "Update Item Menu", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

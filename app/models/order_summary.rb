@@ -1,0 +1,6 @@
+class OrderSummary < ActiveRecord::Base
+belongs_to :user
+has_many :order_menus
+
+
+end

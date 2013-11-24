@@ -1,0 +1,39 @@
+<div class="page-header">
+  <h1>Editing Order Summary #<%= @order_summary.id %></h1>
+</div>
+
+<%= form_tag(order_summary_url(@order_summary), method: 'patch', class: 'form-horizontal') do %>
+  <div class="form-group">
+    <%= label_tag :user_id, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= number_field_tag :user_id, @order_summary.user_id, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :order_status, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :order_status, @order_summary.order_status, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :order_date, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :order_date, @order_summary.order_date, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :order_total, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :order_total, @order_summary.order_total, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-6">
+      <%= submit_tag "Update Order Summary", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
