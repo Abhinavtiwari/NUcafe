@@ -1,7 +1,9 @@
 class OrderSummariesController < ApplicationController
   
   def index
-    @order_summaries = OrderSummary.all
+    #@order_summaries = OrderSummary.all
+    #we can check for admin and assign to all or one
+   @order_summaries = current_user.order_summarys #user can only see his own orders
   end
 
   def show
@@ -13,7 +15,8 @@ class OrderSummariesController < ApplicationController
 
   def create
     @order_summary = OrderSummary.new
-    @order_summary.user_id = params[:user_id]
+    #@order_summary.user_id = params[:user_id]
+    @order_summary.user_id = current_user.id
     @order_summary.order_status = params[:order_status]
     @order_summary.order_date = params[:order_date]
     @order_summary.order_total = params[:order_total]
