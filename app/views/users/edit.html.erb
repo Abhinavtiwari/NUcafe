@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Editing User #<%= @user.id %></h1>
+  <h1>Edit Profile</h1>
 </div>
 
 <%= form_tag(user_url(@user), method: 'patch', class: 'form-horizontal') do %>
@@ -26,7 +26,7 @@
 
   <div class="form-group">
     <div class="col-md-offset-2 col-md-6">
-      <%= submit_tag "Update User", class: 'btn btn-primary' %>
+      <%= submit_tag "Update Profile", class: 'btn btn-primary' %>
     </div>
   </div>
 <% end %>

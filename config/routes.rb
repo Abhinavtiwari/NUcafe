@@ -2,7 +2,9 @@ NUcafe::Application.routes.draw do
   
   devise_for :admins
   devise_for :users  
-  root "users#index"
+  root "about#about"
+
+  get '/about', controller:'about', action:'about'
 
   # Routes for the Item_menu resource:
   # CREATE

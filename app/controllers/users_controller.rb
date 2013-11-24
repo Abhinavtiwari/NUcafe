@@ -36,7 +36,11 @@ class UsersController < ApplicationController
     @user.phone = params[:phone]
 
     if @user.save
+      if current_user.try(:admin?)
       redirect_to users_url, notice: "User updated successfully."
+      else
+      redirect_to root_url, notice: "Your profile has been updated"
+      end  
     else
       render 'edit'
     end
