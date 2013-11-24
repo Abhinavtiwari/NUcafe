@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Item menus</h1>
+  <h1>NUcafe Menu:</h1>
 </div>
 
 <% if current_user.try(:admin?)%>
@@ -54,7 +54,6 @@
         <% if item_menu.friday? %>Friday<%else%><%end%>
         <% if item_menu.saturday? %>Saturday<%else%><%end%>
         <% if item_menu.sunday? %>Sunday<%else%><%end%>
-
       </td>
         <% if current_user.try(:admin?)%>
         <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, item_menu_url(item_menu), class: 'btn btn-primary' %></td>
