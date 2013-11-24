@@ -17,6 +17,8 @@
     </tr>
   </thead>
 
+
+
   <tbody>
     <% @order_menus.each do |order_menu| %>
       <tr>
@@ -30,7 +32,6 @@
     <% end %>
   </tbody>
 </table>
-
 -->
 
 
@@ -52,6 +53,7 @@
     <% @item_menus.each do |item_menu| %>
       <tr>
         <%= form_tag(order_menus_url, method: 'post', class: 'form-horizontal') do %>
+        
         <td><%= item_menu.item_name %></td>
         <td><%= item_menu.item_category %></td>
         <td><%= image_tag item_menu.item_picture, :width => 100 %></td>
