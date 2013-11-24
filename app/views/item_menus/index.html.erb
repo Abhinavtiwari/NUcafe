@@ -2,7 +2,9 @@
   <h1>Item menus</h1>
 </div>
 
+<% if current_user.try(:admin?)%>
 <p><%= link_to 'Add a New Item Menu', new_item_menu_url, class: 'btn btn-primary' %></p>
+<% end %>
 
 <table class="table table-hover">
   <thead>
@@ -40,9 +42,12 @@
         <td><%= item_menu.friday? %></td>
         <td><%= item_menu.saturday? %></td>
         <td><%= item_menu.sunday? %></td>
+
+        <% if current_user.try(:admin?)%>
         <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, item_menu_url(item_menu), class: 'btn btn-primary' %></td>
         <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_item_menu_url(item_menu), class: 'btn btn-warning' %></td>
         <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, item_menu_url(item_menu), method: 'delete', data: { confirm: "Do you really want to delete this item_menu?" }, class: 'btn btn-danger' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

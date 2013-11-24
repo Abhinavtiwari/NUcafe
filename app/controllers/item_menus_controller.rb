@@ -1,5 +1,11 @@
 class ItemMenusController < ApplicationController
+  before_action(:authorize_user, :only => [:show, :edit, :update, :destroy, :new])
 
+  def authorize_user
+   unless current_user.try(:admin?)
+    redirect_to root_url, notice: "You need admin rights to access this section"
+    end
+  end
 
   def index
     @item_menus = ItemMenu.all
