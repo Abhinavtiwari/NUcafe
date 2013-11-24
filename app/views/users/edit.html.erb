@@ -25,6 +25,14 @@
   </div>
 
   <div class="form-group">
+    <%= label_tag "Grant Admin rights?", nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= check_box_tag :admin, @user.admin %>
+      
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class="col-md-offset-2 col-md-6">
       <%= submit_tag "Update Profile", class: 'btn btn-primary' %>
     </div>

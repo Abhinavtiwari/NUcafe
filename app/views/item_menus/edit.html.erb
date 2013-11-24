@@ -2,7 +2,7 @@
   <h1>Editing Item Menu #<%= @item_menu.id %></h1>
 </div>
 
-<%= form_tag(item_menu_url(@item_menu), method: 'patch', class: 'form-horizontal') do %>
+<%= form_tag(item_menu_url(@item_menu), method: 'patch', class: 'form-horizontal', multipart: true) do %>
   <div class="form-group">
     <%= label_tag :item_name, nil, class: 'col-md-2 control-label' %>
     <div class="col-md-6">
@@ -20,7 +20,7 @@
   <div class="form-group">
     <%= label_tag :item_picture, nil, class: 'col-md-2 control-label' %>
     <div class="col-md-6">
-      <%= text_field_tag :item_picture, @item_menu.item_picture, class: 'form-control' %>
+      <%= file_field_tag :item_picture%>
     </div>
   </div>
 

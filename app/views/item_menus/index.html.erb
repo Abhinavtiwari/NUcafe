@@ -47,13 +47,16 @@
         <td><%= item_menu.sunday? %></td>
       -->
       <td>
-        <% if item_menu.monday? %>Monday<%else%><%end%>
-        <% if item_menu.tuesday? %>Tuesday<%else%><%end%>
-        <% if item_menu.wednesday? %>Wednesday<%else%><%end%>
-        <% if item_menu.thursday? %>Thursday<%else%><%end%>
-        <% if item_menu.friday? %>Friday<%else%><%end%>
-        <% if item_menu.saturday? %>Saturday<%else%><%end%>
-        <% if item_menu.sunday? %>Sunday<%else%><%end%>
+        <%if item_menu.monday? and item_menu.tuesday? and item_menu.wednesday? and item_menu.thursday? and item_menu.friday? and item_menu.saturday? and item_menu.sunday?%>All days
+        <%else%>
+          <% if item_menu.monday? %>Monday<%else%><%end%>
+          <% if item_menu.tuesday? %>Tuesday<%else%><%end%>
+          <% if item_menu.wednesday? %>Wednesday<%else%><%end%>
+          <% if item_menu.thursday? %>Thursday<%else%><%end%>
+          <% if item_menu.friday? %>Friday<%else%><%end%>
+          <% if item_menu.saturday? %>Saturday<%else%><%end%>
+          <% if item_menu.sunday? %>Sunday<%else%><%end%>
+        <%end%>
       </td>
         <% if current_user.try(:admin?)%>
         <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, item_menu_url(item_menu), class: 'btn btn-primary' %></td>

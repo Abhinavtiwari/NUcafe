@@ -34,6 +34,7 @@ class UsersController < ApplicationController
     @user.first_name = params[:first_name]
     @user.last_name = params[:last_name]
     @user.phone = params[:phone]
+    @user.admin = params[:admin]
 
     if @user.save
       if current_user.try(:admin?)
