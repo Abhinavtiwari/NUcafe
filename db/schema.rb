@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131124010922) do
+ActiveRecord::Schema.define(version: 20131124014223) do
 
   create_table "item_menus", force: true do |t|
     t.string  "item_name"
@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 20131124010922) do
   end
 
   create_table "order_menus", force: true do |t|
-    t.integer "item_id"
     t.integer "item_quantity"
     t.integer "order_id"
+    t.integer "item_menu_id"
   end
 
   create_table "order_summaries", force: true do |t|

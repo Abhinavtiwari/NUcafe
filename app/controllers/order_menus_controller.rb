@@ -13,7 +13,7 @@ class OrderMenusController < ApplicationController
 
   def create
     @order_menu = OrderMenu.new
-    @order_menu.item_id = params[:item_id]
+    @order_menu.item_menu_id = params[:item_menu_id]
     @order_menu.item_quantity = params[:item_quantity]
     @order_menu.order_id = params[:order_id]
 
@@ -30,7 +30,7 @@ class OrderMenusController < ApplicationController
 
   def update
     @order_menu = OrderMenu.find_by(id: params[:id])
-    @order_menu.item_id = params[:item_id]
+    @order_menu.item_menu_id = params[:item_menu_id]
     @order_menu.item_quantity = params[:item_quantity]
     @order_menu.order_id = params[:order_id]
 

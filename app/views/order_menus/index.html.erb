@@ -19,7 +19,7 @@
   <tbody>
     <% @order_menus.each do |order_menu| %>
       <tr>
-        <td><%= order_menu.item_id %></td>
+        <td><%= order_menu.item_menu.item_name%></td>
         <td><%= order_menu.item_quantity %></td>
         <td><%= order_menu.order_id %></td>
         <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, order_menu_url(order_menu), class: 'btn btn-primary' %></td>
