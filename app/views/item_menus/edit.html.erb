@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>Editing Item Menu #<%= @item_menu.id %></h1>
 </div>
-<%=current_user.admin%>
+
 <%= form_tag(item_menu_url(@item_menu), method: 'patch', class: 'form-horizontal', multipart: true) do %>
   <div class="form-group">
     <%= label_tag :item_name, nil, class: 'col-md-2 control-label' %>

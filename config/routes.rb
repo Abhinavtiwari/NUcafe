@@ -25,7 +25,7 @@ NUcafe::Application.routes.draw do
 
   # Routes for the Order_menu resource:
   # CREATE
-  get '/order_menus/new', controller: 'order_menus', action: 'new', as: 'new_order_menu'
+  post '/order_menus/new', controller: 'order_menus', action: 'new', as: 'new_order_menu'
   post '/order_menus', controller: 'order_menus', action: 'create', as: 'order_menus'
 
   # READ
