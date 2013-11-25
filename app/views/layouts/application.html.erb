@@ -54,7 +54,6 @@
           <%if current_user.try(:admin?)%>
           <li><%= link_to "Users", users_url %></li>
           <%end%>
-        <li><a href="#">About</a></li>
         <% else %>
           <li><%= link_to "Sign up", new_user_registration_path %></li>
           <li><%= link_to "Login", new_user_session_path %></li>
