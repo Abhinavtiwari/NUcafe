@@ -30,17 +30,28 @@ class OrderMenusController < ApplicationController
     else
       @order_summary = OrderSummary.find_by(:id=> Rails.cache.read("order_id"))
     end
-
+  
+    
+    itemexists = OrderMenu.where(:order_id => Rails.cache.read("order_id"), :item_menu_id => params[:item_menu_id]  )
+    if(itemexists.count==0)
     @order_menu = OrderMenu.new
     @order_menu.item_menu_id = params[:item_menu_id]
     @order_menu.item_quantity = params[:item_quantity]
-    @order_menu.order_id = @order_summary.id
-    
+    @order_menu.order_id = Rails.cache.read("order_id")
     if @order_menu.save
-      redirect_to order_menus_url, notice: "Order menu created successfully."
+      redirect_to order_menus_url, notice: "Item added successfully."
     else
       render 'new'
     end
+    else
+    @order_menu = OrderMenu.where(:order_id => Rails.cache.read("order_id"), :item_menu_id => params[:item_menu_id])
+    @order_menu.first.item_quantity = @order_menu.first.item_quantity + params[:item_quantity].to_i
+    @order_menu.first.save
+    redirect_to order_menus_url, notice: "Item added successfully."
+    end
+
+
+    
   end
 
   def create
@@ -74,7 +85,7 @@ class OrderMenusController < ApplicationController
   end
 
   def destroy
-    @order_menu = OrderMenu.find_by(id: params[:id])
+    @order_menu = OrderMenu.find_by(:item_menu_id => params[:id], :order_id => Rails.cache.read("order_id"))
     @order_menu.destroy
 
     redirect_to order_menus_url, notice: "Order menu deleted."

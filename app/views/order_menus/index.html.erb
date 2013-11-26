@@ -5,7 +5,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Item name</th>
+      <th>Item Id</th>
       <th>Item category</th>
       <th>Item picture</th>
       <th>Item description</th>
@@ -38,13 +38,11 @@
 </table>
  
 <table>
-  <p> Order Summary  <%= @order_summary.id %>  </p>
+  <p> Order Summary <%= Rails.cache.read("order_id") %> </p>
 <thead>
 <tr>
   <th>Item name</th>
-      <th>Item category</th>
-      <th>Item picture</th>
-      <th>Item description</th>
+      
       <th>Item price</th>
       <th>Quantity </th>
 </tr>
@@ -52,21 +50,27 @@
 <tbody>
 <th>
   
-
+  <% bill = 0 %>
   <% @inprogress_item_menus.each do |item_menu| %>
       <tr>
         <td><%= item_menu.item_menu.item_name %></td>
-        <td><%= item_menu.item_menu.item_category %></td>
-        <td><%= item_menu.item_menu.item_picture %></td>
-        <td><%= item_menu.item_menu.item_description %></td>
         <td><%= item_menu.item_menu.item_price %></td>
         <td><%= item_menu.item_quantity %></td>
+        <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, order_menu_url(item_menu.item_menu.id), method: 'delete', data: { confirm: "Do you really want to delete this order_summary?" }, class: 'btn btn-danger' %></td>
       </tr>
+      <% bill = bill + (item_menu.item_menu.item_price * item_menu.item_quantity ) %>
       <% end %>
 </th>
 </tbody>
+
+
 </table>
+<p> Sub Total: <%= bill.round(2) %> </p>
+<% tax = 0.09 * bill %>
+<p> Tax: <%= tax.round(2) %>
+<%= form_tag(order_summaries_url, method: 'post', class: 'input-mini') do %>
 
+<p> Total: <%= text_field_tag :order_total, (bill + tax).round(2), class: '' %> </p>
 
-
-
+<td><%= submit_tag "Submit Order", class: 'btn btn-primary' %></td>
+<% end %>
