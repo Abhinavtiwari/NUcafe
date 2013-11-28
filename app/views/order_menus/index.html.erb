@@ -2,15 +2,15 @@
   <h1>Order menus</h1>
 </div>
 
-<table class="table table-hover">
+<table class="table table-hover ">
   <thead>
     <tr>
-      <th>Item Id</th>
       <th>Item category</th>
       <th>Item picture</th>
       <th>Item description</th>
       <th>Item price</th>
       <th>Quantity </th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -20,16 +20,18 @@
       <tr>
         <%= form_tag(new_order_menu_url, method: 'post', class: 'form-horizontal') do %>
         
-        <td><%= text_field_tag :item_menu_id, item_menu.id %></td>
+        
         <td><%= item_menu.item_category %></td>
         <td><%= image_tag item_menu.item_picture, :width => 100 %></td>
         <td><%= item_menu.item_description %></td>
         <td><%= item_menu.item_price %></td>
+        
         <td>
           <div class="form-group">
             <%= text_field_tag :item_quantity, 0, class: 'form-control' %>
           </div>
        </td>
+       <td><%= hidden_field_tag :item_menu_id, item_menu.id %></td>
        <td><%= submit_tag "Add to Order", class: 'btn btn-primary' %></td>
       </tr>
       <% end %>
@@ -37,30 +39,30 @@
   </tbody>
 </table>
  
+ <label>Order Summary - OrderID: <%= @order_summary.id %></label>
 <table>
-  <p> Order Summary <%= Rails.cache.read("order_id") %> </p>
 <thead>
 <tr>
-  <th>Item name</th>
-      
+      <th>Item name</th>
       <th>Item price</th>
       <th>Quantity </th>
 </tr>
 </thead>
 <tbody>
-<th>
+<tr>
   
   <% bill = 0 %>
   <% @inprogress_item_menus.each do |item_menu| %>
-      <tr>
+      
         <td><%= item_menu.item_menu.item_name %></td>
         <td><%= item_menu.item_menu.item_price %></td>
         <td><%= item_menu.item_quantity %></td>
-        <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, order_menu_url(item_menu.item_menu.id), method: 'delete', data: { confirm: "Do you really want to delete this order_summary?" }, class: 'btn btn-danger' %></td>
-      </tr>
+        <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, order_menu_url(item_menu.item_menu.id), method: 'delete', data: { confirm: "Do you really want to delete this item?" }, class: 'btn btn-danger' %></td>
+      
       <% bill = bill + (item_menu.item_menu.item_price * item_menu.item_quantity ) %>
-      <% end %>
-</th>
+      
+</tr>
+<% end %>
 </tbody>
 
 
@@ -70,7 +72,8 @@
 <p> Tax: <%= tax.round(2) %>
 <%= form_tag(order_summaries_url, method: 'post', class: 'input-mini') do %>
 
-<p> Total: <%= text_field_tag :order_total, (bill + tax).round(2), class: '' %> </p>
+<p> Total: <%= (bill + tax).round(2) %> </p>
+<p><%= hidden_field_tag :order_total, (bill + tax).round(2) %></p>
 
 <td><%= submit_tag "Submit Order", class: 'btn btn-primary' %></td>
 <% end %>
