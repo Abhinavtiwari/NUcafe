@@ -24,7 +24,7 @@ class OrderSummariesController < ApplicationController
     @order_summary.order_total = params[:order_total]
     text_message = "Order "+@order_summary.id.to_s + " successfully placed at "+ Time.new.to_s
     if @order_summary.save
-       message_reply = send_text_message("+19192719035", text_message) #Hard coded for now
+      # message_reply = send_text_message("+19192719035", text_message) #Hard coded for now
        redirect_to order_summaries_url, notice: text_message
     else
       render 'new'
