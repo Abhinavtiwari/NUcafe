@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class OrderSummariesController < ApplicationController
   helper :all
   def index
@@ -20,17 +22,10 @@ class OrderSummariesController < ApplicationController
     @order_summary.order_status = "Submitted"
     @order_summary.order_date = Time.new
     @order_summary.order_total = params[:order_total]
-    text_message = @order_summary.id.to_s + " successfully recieved at"+ Time.new.to_s
+    text_message = "Order "+@order_summary.id.to_s + " successfully placed at "+ Time.new.to_s
     if @order_summary.save
-       # twilio_sid = ENV["twilio_sid"].to_s
-       # twilio_token = ENV["twilio_token"].to_s
-       # twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
-       # message = twilio_client.account.sms.messages.create(
-       #       :from => "+19196663079", 
-       #      :to => "+19192719035", 
-       #       :body => text_message
-       #     )
-        redirect_to order_summaries_url, notice: "Order summary created successfully."
+       message_reply = send_text_message("+19192719035", text_message) #Hard coded for now
+       redirect_to order_summaries_url, notice: text_message
     else
       render 'new'
     end
