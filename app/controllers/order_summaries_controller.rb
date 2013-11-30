@@ -30,9 +30,9 @@ class OrderSummariesController < ApplicationController
     @order_summary.order_status = "Submitted"
     @order_summary.order_date = Time.new
     @order_summary.order_total = params[:order_total]
-    text_message = "Order "+@order_summary.id.to_s + " successfully placed at "+ Time.new.to_s
+    text_message = "Order "+@order_summary.id.to_s + " successfully Submitted at "+ Time.new.to_s
     if @order_summary.save
-      # message_reply = send_text_message("+19192719035", text_message) #Hard coded for now
+       message_reply = send_text_message("+16509332466", text_message) #Hard coded for now
        redirect_to order_summaries_url, notice: text_message
     else
       render 'new'
@@ -49,7 +49,8 @@ class OrderSummariesController < ApplicationController
     @order_summary.order_status = params[:order_status]
     @order_summary.order_date = params[:order_date]
     @order_summary.order_total = params[:order_total]
-    
+    text_message = "Order "+@order_summary.id.to_s + " has been "+ @order_summary.order_status.to_s+" at "+Time.new.to_s
+    message_reply = send_text_message("+16509332466", text_message)
 
     if @order_summary.save
       redirect_to order_summaries_url, notice: "Order summary updated successfully."
