@@ -1,4 +1,15 @@
-<div class="page-header">
+
+
+
+
+<div class="page-header" align="center">
+	<%= image_tag 'http://www.cityofevanston.org/news/assets/NU%20Logo.jpg', :width => 500 %>
+</div>
+
+
+<div>
+</div>
+<div>
   <h1>Hello <%= current_user.first_name.capitalize%> !</h1>
   <% Rails.cache.write("order_id"+current_user.id.to_s,nil) %>
 </div>
