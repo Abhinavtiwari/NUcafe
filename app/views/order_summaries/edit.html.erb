@@ -13,7 +13,7 @@
   <div class="form-group">
     <%= label_tag :order_status, nil, class: 'col-md-2 control-label' %>
     <div class="col-md-6">
-      <%= text_field_tag :order_status, @order_summary.order_status, class: 'form-control' %>
+      <%= select_tag :order_status, options_for_select([ "Submitted", "Completed", "Cancelled" ], @order_summary.order_status), class: 'form-control' %>
     </div>
   </div>
 

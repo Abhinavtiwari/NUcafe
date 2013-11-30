@@ -3,9 +3,17 @@ require 'twilio-ruby'
 class OrderSummariesController < ApplicationController
   helper :all
   def index
+    if current_user.try(:admin?)
+    @order_summaries = OrderSummary.order('order_date DESC')
+   
+    #@order_summaries = OrderSummary.order(params[:sort]) if params[:sort]
+    @order_summaries = @order_summaries.all
+
     #@order_summaries = OrderSummary.all
+  else
     #we can check for admin and assign to all or one
-   @order_summaries = current_user.order_summarys #user can only see his own orders
+   @order_summaries = current_user.order_summarys.order('order_date DESC') #user can only see his own orders
+ end
   end
 
   def show

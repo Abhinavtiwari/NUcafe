@@ -2,15 +2,18 @@
   <h1>Order summaries</h1>
 </div>
 
-<p><%= link_to 'Add a New Order Summary', new_order_summary_url, class: 'btn btn-primary' %></p>
+<!-- <p><%= link_to 'Add a New Order Summary', new_order_summary_url, class: 'btn btn-primary' %></p> -->
 
 <table class="table table-hover">
   <thead>
     <tr>
+      <%if current_user.try(:admin?) %>
       <th>User</th>
+      <%end%>
       <th>Order Id </th>
       <th>Order status</th>
       <th>Order date</th>
+    
       <th>Order total</th>
       <th></th>
       <th></th>
@@ -21,14 +24,18 @@
   <tbody>
     <% @order_summaries.each do |order_summary| %>
       <tr>
-        <td><%= order_summary.user_id %></td>
+        <%if current_user.try(:admin?) %>
+        <td><%= order_summary.user.first_name%> <%= order_summary.user.last_name%> (ID: <%= order_summary.user.id%>)</td>
+        <%end%>
         <td><%= order_summary.id %></td>
         <td><%= order_summary.order_status %></td>
         <td><%= order_summary.order_date %></td>
         <td><%= order_summary.order_total %></td>
+        <%if current_user.try(:admin?) %>
         <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, order_summary_url(order_summary), class: 'btn btn-primary' %></td>
         <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_order_summary_url(order_summary), class: 'btn btn-warning' %></td>
         <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, order_summary_url(order_summary), method: 'delete', data: { confirm: "Do you really want to delete this order_summary?" }, class: 'btn btn-danger' %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
