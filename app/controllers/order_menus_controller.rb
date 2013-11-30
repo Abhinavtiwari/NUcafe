@@ -6,6 +6,7 @@ helper :all
     @time = Time.new
     @time = @time.strftime("%A").to_s.downcase
     @item_menus =  ItemMenu.where(@time=>true)
+    @item_menus =  @item_menus.order('item_category ASC')
     # if no current order exists for the user then create a new one.
     orderexists = OrderSummary.where(:user_id=>current_user.id, :order_status=>"Current Order")
     if(orderexists.count>0) # Order exists

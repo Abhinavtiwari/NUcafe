@@ -11,3 +11,24 @@
  *= require_self
  *= require_tree .
  */
+
+ .container-fluid {
+  padding-left: 20px;
+}
+
+.bordercolumn {
+border-style: dotted;
+border-width:thin;
+border-color: blue;
+text-align: top;
+vertical-align: top;
+padding: 10px;
+}
+
+.emptypadding {
+padding: 20px;
+}
+
+.align {
+vertical-align: top;
+}
