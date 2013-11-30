@@ -32,7 +32,7 @@
         <td><%= order_summary.order_date %></td>
         <td><%= order_summary.order_total %></td>
         <%if current_user.try(:admin?) %>
-        
+        <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, order_summary_url(order_summary), class: 'btn btn-primary' %></td>
         <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_order_summary_url(order_summary), class: 'btn btn-warning' %></td>
         <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, order_summary_url(order_summary), method: 'delete', data: { confirm: "Do you really want to delete this order_summary?" }, class: 'btn btn-danger' %></td>
         <%end%>

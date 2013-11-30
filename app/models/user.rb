@@ -5,5 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 has_many :order_summarys
+validates :first_name, :presence => true
+validates :phone, :presence => true
 
 end
