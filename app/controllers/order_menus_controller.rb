@@ -50,7 +50,7 @@ helper :all
         if @order_menu.save
           redirect_to order_menus_url, notice: "Item added successfully."
         else
-          render 'new'
+          redirect_to order_menus_url, notice: "Quantity cannot be zero"
         end
     else #item exists, update quantity
       @order_menu = OrderMenu.where(:order_id => @order_summary.id, :item_menu_id => params[:item_menu_id])
