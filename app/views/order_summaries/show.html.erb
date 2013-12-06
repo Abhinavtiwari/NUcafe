@@ -4,7 +4,10 @@
 
 <dl class="dl-horizontal">
   <dt>User</dt>
-  <dd><%= @order_summary.user_id %></dd>
+  <% firstname = @order_summary.user.first_name.to_s %>
+  <% lastname =  @order_summary.user.last_name.to_s %>
+
+  <dd><%= firstname+ " " + lastname %></dd>
 
   <dt>Order status</dt>
   <dd><%= @order_summary.order_status %></dd>
