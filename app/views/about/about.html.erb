@@ -2,18 +2,82 @@
 
 
 
-<div class="page-header" align="center">
-	<%= image_tag 'http://www.cityofevanston.org/news/assets/NU%20Logo.jpg', :width => 500 %>
-</div>
 
 
-<div>
-</div>
-<div>
-  <h1>Hello <%= current_user.first_name.capitalize%> !</h1>
-  <% Rails.cache.write("order_id"+current_user.id.to_s,nil) %>
+
+<div class ="jumbotron">
+ <!-- <div class="container" align:"float"> -->
+  
+  <img align:"left" src="http://www.kellogg.northwestern.edu/~/media/banner_left.ashx"> 
+  <h1>Hello <%= current_user.first_name.capitalize%>! Welcome of NU Cafe Online Ordering</h1>
+  
 </div>
 
-<div>
-<h2 style="color:red;">Welcome to Northwestern University Cafe's online ordering system</h2>
-</div>
+<% count = rand(0..(@item_menus.count-1) )   %>
+<% show = 0 %>
+ 
+<table class="table table-hover">
+  <thead>
+  	<label> Today's Random item of the day </label>
+    <tr>
+      <th>Item name</th>
+      <th>Item category</th>
+      <th>Item picture</th>
+      <th>Item description</th>
+      <th>Item price</th>
+      <!--
+      <th>Monday</th>
+      <th>Tuesday</th>
+      <th>Wednesday</th>
+      <th>Thursday</th>
+      <th>Friday</th>
+      <th>Saturday</th>
+      <th>Sunday</th> -->
+      <th>Available on </th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+ 
+  
+
+
+  <tbody>
+    <% @item_menus.each do |item_menu| %>
+      <% if(show==count)%>
+
+			      <tr>
+			        <td><%= item_menu.item_name %></td>
+			        <td><%= item_menu.item_category %></td>
+			        <td><%= image_tag item_menu.item_picture, :width => 100 %></td>
+			        <td><%= item_menu.item_description %></td>
+			        <td><%= item_menu.item_price %></td>
+			      <!--  
+			        <td><%= item_menu.monday? %></td>
+			        <td><%= item_menu.tuesday? %></td>
+			        <td><%= item_menu.wednesday? %></td>
+			        <td><%= item_menu.thursday? %></td>
+			        <td><%= item_menu.friday? %></td>
+			        <td><%= item_menu.saturday? %></td>
+			        <td><%= item_menu.sunday? %></td>
+			      -->
+			      <td>
+			        <%if item_menu.monday? and item_menu.tuesday? and item_menu.wednesday? and item_menu.thursday? and item_menu.friday? and item_menu.saturday? and item_menu.sunday?%>All days
+			        <%else%>
+			          <% if item_menu.monday? %>Monday<%else%><%end%>
+			          <% if item_menu.tuesday? %>Tuesday<%else%><%end%>
+			          <% if item_menu.wednesday? %>Wednesday<%else%><%end%>
+			          <% if item_menu.thursday? %>Thursday<%else%><%end%>
+			          <% if item_menu.friday? %>Friday<%else%><%end%>
+			          <% if item_menu.saturday? %>Saturday<%else%><%end%>
+			          <% if item_menu.sunday? %>Sunday<%else%><%end%>
+			        <%end%>
+			      </td>
+			        
+			      </tr>
+		<% end %>
+		<% show = show + 1 %>
+	<% end %>
+  </tbody>
+</table>
