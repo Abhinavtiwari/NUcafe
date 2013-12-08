@@ -30,13 +30,13 @@ class OrderSummariesController < ApplicationController
     @order_summary.order_status = "Submitted"
     @order_summary.order_date = Time.new
     @order_summary.order_total = params[:order_total]
-    text_message = "Order "+@order_summary.id.to_s + " successfully Submitted at "+ Time.new.to_s
+    text_message = "Order "+@order_summary.id.to_s + " successfully Submitted at "+ Time.new.to_s 
     @error = false
     if @order_summary.save
        phone_number = current_user.phone.to_s
        begin
-        text_message = send_text_message(phone_number, text_message) #Hard coded for now)
-        # Text message success
+        send_text_message(phone_number, text_message) #Hard coded for now)
+        #Text message success
        rescue
         # Text message failure
         text_message = text_message + " Unable to send text message. Please contact Customer Support."
@@ -63,12 +63,12 @@ class OrderSummariesController < ApplicationController
       
       phone_number = current_user.phone.to_s
       begin
-        text_message = send_text_message(phone_number, text_message) #Hard coded for now)
+       send_text_message(phone_number, text_message) #Hard coded for now)
         # Text message success
-       rescue
+      rescue
         # Text message failure
-        text_message = text_message + " Unable to send text message. Please contact Customer Support."
-       end
+       text_message = text_message + " Unable to send text message. Please contact Customer Support."
+      end
        redirect_to order_summaries_url, notice: text_message
     else
       render 'edit'
