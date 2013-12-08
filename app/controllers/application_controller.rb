@@ -24,10 +24,10 @@ class ApplicationController < ActionController::Base
   end
 
   def send_text_message(phone_number, text_message)
-       #twilio_sid = ENV["twilio_sid"].to_s
-       #twilio_token = ENV["twilio_token"].to_s
-       #twilio_client = Twilio::REST::Client.new(twilio_sid, twilio_token)
-       #twilio_client.account.sms.messages.create(from: "+19196663079", to: "+16509332466", body: text_message) #hard coded my number
+       twilio_sid = ENV["twilio_sid"].to_s
+       twilio_token = ENV["twilio_token"].to_s
+       twilio_client = Twilio::REST::Client.new(twilio_sid, twilio_token)
+       twilio_client.account.sms.messages.create(from: "+19196663079", to: phone_number, body: text_message) #hard coded my number
   end
 
 
