@@ -10,6 +10,8 @@ class ItemMenusController < ApplicationController
 
   def index
     @item_menus = ItemMenu.all
+    @item_menus =  @item_menus.order('item_category ASC')
+
   end
 
   def show
