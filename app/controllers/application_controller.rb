@@ -25,9 +25,7 @@ class ApplicationController < ActionController::Base
 
   def send_text_message(phone_number, text_message)
        twilio_sid = ENV["twilio_sid"].to_s
-       twilio_sid = "AC5c856a34cccb7d2c01595ff613d4d4ac"
        twilio_token = ENV["twilio_token"].to_s
-       twilio_token = "8b2ffa0436b39cbfc487aaf7d5b11a5f"
        twilio_client = Twilio::REST::Client.new(twilio_sid, twilio_token)
        success = twilio_client.account.sms.messages.create(from: "+19196663079", to: phone_number, body: text_message) #hard coded my number
   end

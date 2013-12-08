@@ -8,7 +8,7 @@ gem 'carrierwave'
 # Use sqlite3 as the database for Active Record
 
 
-	gem 'sqlite3'
+gem 'sqlite3'
 
 
 #group :production do
@@ -30,8 +30,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'twilio-ruby'
 
-gem 'logger'
-gem 'log4r'
+#gem 'logger'
+#gem 'log4r'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
