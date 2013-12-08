@@ -61,7 +61,7 @@ class OrderSummariesController < ApplicationController
     @error = false
     if @order_summary.save
       
-      phone_number = current_user.phone.to_s
+      phone_number = @order_summary.user.phone.to_s
       begin
        send_text_message(phone_number, text_message) #Hard coded for now)
         # Text message success
