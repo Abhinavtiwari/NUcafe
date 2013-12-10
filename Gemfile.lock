@@ -60,8 +60,6 @@ GEM
     json (1.8.1)
     jwt (0.1.8)
       multi_json (>= 1.5)
-    log4r (1.1.10)
-    logger (1.2.8)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -139,8 +137,6 @@ DEPENDENCIES
   devise
   jbuilder (~> 1.2)
   jquery-rails
-  log4r
-  logger
   rails (= 4.0.1)
   sass-rails (~> 4.0.0)
   sdoc
